@@ -25,20 +25,9 @@ export class App extends React.Component<{}, State> {
     document.addEventListener('contextmenu', this.handleRightClick);
     document.addEventListener('click', this.handleLeftClick);
 
-    // ⬅️ таймер ЗАВЖДИ працює
     this.nameTimerId = window.setInterval(() => {
       this.setState({ clockName: getRandomName() });
     }, 3300);
-  }
-
-  componentDidUpdate(_: {}, prevState: State) {
-    // ⬅️ логування ЗАЛЕЖИТЬ від hasClock
-    if (this.state.hasClock && prevState.clockName !== this.state.clockName) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        `Renamed from ${prevState.clockName} to ${this.state.clockName}`,
-      );
-    }
   }
 
   componentWillUnmount() {
